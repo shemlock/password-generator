@@ -122,12 +122,13 @@ function getPasswordOptions() {
     };
   }
 
-
-
-
   // Function for getting a random element from an array
+  // Use math.floor the make the final number be rounded down to a whole number
+  // Multiply math.random by the length of the array to make the range be 0 to the size of the array 
+  // Return the array element at the random index. 
   function getRandom(arr) {
-  
+    var randomIndex = Math.floor(Math.random() * arr.length);
+    return arr[randomIndex];
   }
   
   // Function to generate password with user input
