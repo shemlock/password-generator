@@ -89,10 +89,42 @@ var specialCharacters = [
   ];
   
   // Function to prompt user for password options
-  function getPasswordOptions() {
+function getPasswordOptions() {
+    // Prompt the user for how long they want the password
+    // Convert their input to an int
+    // Alert for if they choose an incorrect character length
+    var length = parseInt(prompt("How long would you like your password to be. (Please choose between 8 to 128 characters)"));
+    if (isNaN(length) || length < 8 || length > 128) {
+      alert("Password length must be between 8 and 128 characters.Please try again.");
+      return null;
+    }
   
+    // Create variables for each character type
+    // Store the users character preference
+    var hasSpecialCharacters = confirm("Would you like your password to include special characters? Click OK for YES. Click CANCEL for NO.");
+    var hasNumericCharacters = confirm("Would you like your password to include numbers? Click OK for YES. Click CANCEL for NO.");
+    var hasLowerCasedCharacters = confirm("Would you like your password to include lowercase characters. Click OK for YES. Click CANCEL for NO.");
+    var hasUpperCasedCharacters = confirm("Would you like your password to include uppercase characters. Click OK for YES. Click CANCEL for NO.");
+  
+    // Alert for if the user selects no character types
+    if (!hasSpecialCharacters && !hasNumericCharacters && !hasLowerCasedCharacters && !hasUpperCasedCharacters) {
+      alert("Please select at least one character type!");
+      return null;
+    }
+  
+    // Return an object containing the users password options
+    return {
+      length: length,
+      hasSpecialCharacters: hasSpecialCharacters,
+      hasNumericCharacters: hasNumericCharacters,
+      hasLowerCasedCharacters: hasLowerCasedCharacters,
+      hasUpperCasedCharacters: hasUpperCasedCharacters
+    };
   }
-  
+
+
+
+
   // Function for getting a random element from an array
   function getRandom(arr) {
   
