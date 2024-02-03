@@ -14,7 +14,7 @@ The motivation for this project was to allow users to generate a random password
   * Functions
   * For Loops
   * If statements
-  * Arrayas
+  * Arrays
 
 ## Table of Contents
 
@@ -34,7 +34,7 @@ N/A
   
 * Click the red button that says generate password.
   
-* You will then see a prompt that asks you how long your password should be (as seen in the image below). Please type in your desired number of characters for your password. 
+* You will then see a prompt that asks you how long your password should be (as seen in the image below). Please type in your desired number of characters for your password, then press OK.  
 
 ![prompt](assets/images/length.png)
 
