@@ -131,9 +131,66 @@ function getPasswordOptions() {
     return arr[randomIndex];
   }
   
-  // Function to generate password with user input
-  function generatePassword() {
+
+// Function to generate password with user input
+// Create a variable called options and store the getPasswordOptions function in it
+// If there's no options, return an empty string
+function generatePassword() {
+    var options = getPasswordOptions();
+    if (!options) return '';
   
+    // Create 2 variables for possible & guaranteed characters
+    // Set them as empty arrays
+    var possibleCharacters = [];
+    var guaranteedCharacters = [];
+  
+    // Check if the password should have special characters
+    // If yes, concatenate them to the possibleCharacters array
+    // Then push a random one to the guranteedCharacters array
+    if (options.hasSpecialCharacters) {
+      possibleCharacters = possibleCharacters.concat(specialCharacters);
+      guaranteedCharacters.push(getRandom(specialCharacters));
+    }
+  
+    // Check if the password should have numbers
+    // If yes, concatenate them to the possibleCharacters array
+    // Then push a random one to the guranteedCharacters array
+    if (options.hasNumericCharacters) {
+      possibleCharacters = possibleCharacters.concat(numericCharacters);
+      guaranteedCharacters.push(getRandom(numericCharacters));
+    }
+   
+    // Check if the password should have lower case characters
+    // If yes, concatenate them to the possibleCharacters array
+    // Then push a random one to the guranteedCharacters array
+    if (options.hasLowerCasedCharacters) {
+      possibleCharacters = possibleCharacters.concat(lowerCasedCharacters);
+      guaranteedCharacters.push(getRandom(lowerCasedCharacters));
+    }
+    
+    // Check if the password should have upper case characters
+    // If yes, concatenate them to the possibleCharacters array
+    // Then push a random one to the guranteedCharacters array
+    if (options.hasUpperCasedCharacters) {
+      possibleCharacters = possibleCharacters.concat(upperCasedCharacters);
+      guaranteedCharacters.push(getRandom(upperCasedCharacters));
+    }
+  
+    // Create a variable called random password and store a empty string in it
+    var randomPassword = '';
+    // Use a for loop to iterate over the password length
+    // If there's still guranteed characters to add, add them the random password variable
+    // Otherwise add random characters from the possibleCharacters array
+    for (var i = 0; i < options.length; i++) {
+      if (i < guaranteedCharacters.length) {
+        randomPassword += guaranteedCharacters[i];
+      } else {
+        randomPassword += getRandom(possibleCharacters);
+      }
+    }
+    
+    // return random password
+    return randomPassword;
   }
   
   // Get references to the #generate element
